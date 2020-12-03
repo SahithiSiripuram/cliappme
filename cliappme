@@ -1,0 +1,58 @@
+var readlineSync = require('readline-sync');
+var chalk = require('chalk')
+var userName = readlineSync.question(chalk.cyanBright("What is your name?\n"));
+console.log(chalk.yellow("\nNamaste "+userName));
+console.log(chalk.cyanBright("\nThis is do you know me quiz"));
+var score=0;
+function play(question, answer) 
+{
+  var userAnswer = readlineSync.question(question);
+  if (userAnswer === answer)
+  {
+    console.log(chalk.green("\nThat's correct!\n"));
+    score = score + 2;
+  }
+  else 
+  {
+    console.log(chalk.red("\nUh Oh! No that's not correct!\n"));
+    score = score - 1;
+  }
+}
+var questions=[{
+  question:"\nWhat is my age?\na.22\nb.16\nc.18\nd.20\n",
+  answer:'d'
+  },
+  {
+  question:"\nWhat is my Full Name?\na.Sahithi Siripuram\nb.Sahithi Siripurapu\nc.Sahithi Sharma\nd.Sahithi Rao\n",
+  answer:'a'
+  },
+  {
+  question:"\nWhat is my Height?\na.5'4\nb.5'2\nc.5'8\nd.4'11\n",
+  answer:'b'
+  },
+  {
+  question:"\nWhat are my hobbies?\na.Writing Poetry\nb.Singing'2\nc.Watching documentries and reading biographies\nd.All of the above\n",
+  answer:'d'
+  },
+  {
+  question:"\nWhat is my favourite language?\na.Go\nb.Java\nc.C++\nd.JavaScript\n",
+  answer:'c'
+  },
+  {
+  question:"\nWhere do I live?\na.Hyderabad\nb.Pune\nc.Mumbai\nd.Delhi\n",
+  answer:'a'
+  },
+  {
+  question:"\nWhat is my mother tongue?\na.Marathi\nb.Gujarati\nc.Telugu\nd.Tamil\n",
+  answer:'c'
+  },
+  ]
+
+  for (var i=0;i<questions.length; i++) 
+  {
+    var currentresult = questions[i];
+    play(currentresult.question, currentresult.answer);
+  }
+
+console.log(chalk.yellow("\nYour score is "+score+"\n"));
+(score>=8)?console.log(chalk.green("YO! You really do know me I guess!\n")):console.log(chalk.red("You don't know me as much. Bye!\n"));
